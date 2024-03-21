@@ -138,7 +138,7 @@
         
         public static void ListContainers()
         {
-            Console.WriteLine("Choose a container to load: ");
+            Console.WriteLine("Choose a container: ");
             for (var i = 0; i < Containers.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {Containers[i]}");
