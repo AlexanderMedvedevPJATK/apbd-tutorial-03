@@ -6,7 +6,7 @@ public class GasContainer : Container, IHazardNotifier
 {
     
     public double Pressure { get; protected set; }
-    // constructor
+    
     public GasContainer(
         double cargoMass, 
         double height, 

@@ -16,23 +16,23 @@
             while (!int.TryParse(Console.ReadLine(), out input) && input < 1 || input > 3);
             
             double cargoMass;
-            do Console.WriteLine("Enter cargo mass: ");
+            do Console.WriteLine("Enter cargo mass in kg: ");
             while (!double.TryParse(Console.ReadLine(), out cargoMass) && cargoMass <= 0);
 
             double height;
-            do Console.WriteLine("Enter height: ");
+            do Console.WriteLine("Enter height in cm: ");
             while (!double.TryParse(Console.ReadLine(), out height) && height <= 0);
                     
             double tareWeight;
-            do Console.WriteLine("Enter tare weight: ");
+            do Console.WriteLine("Enter tare weight in kg: ");
             while (!double.TryParse(Console.ReadLine(), out tareWeight));
                     
             double depth;
-            do Console.WriteLine("Enter depth: ");
+            do Console.WriteLine("Enter depth in cm: ");
             while (!double.TryParse(Console.ReadLine(), out depth) && depth <= 0);
                     
             double maxPayload;
-            do Console.WriteLine("Enter max payload: ");
+            do Console.WriteLine("Enter max payload in kg: ");
             while (!double.TryParse(Console.ReadLine(), out maxPayload) && maxPayload <= 0);
             
             switch (input)
@@ -47,7 +47,7 @@
                     return liquidContainer;
                 case 2:
                     double pressure;
-                    do Console.WriteLine("Enter pressure: ");
+                    do Console.WriteLine("Enter pressure in atmospheres: ");
                     while (!double.TryParse(Console.ReadLine(), out pressure) && pressure <= 0);
                     
                     var gasContainer = new GasContainer(cargoMass, height, tareWeight, depth, maxPayload, pressure);
@@ -55,11 +55,22 @@
                     return gasContainer;
                 case 3:
                     Product product;
-                    do Console.WriteLine("Enter product: ");
-                    while (!Enum.TryParse(Console.ReadLine(), out product));
+                    Console.WriteLine("Enter product index from the list: ");
+                    var products = Enum.GetNames(typeof(Product));
+                    for (var i = 0; i < products.Length; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {products[i]}");
+                    }
+                    int productIndex;
+                    do Console.WriteLine("Enter product index from the list: ");
+                    while (!int.TryParse(Console.ReadLine(), out productIndex) &&
+                           productIndex < 0 || productIndex > products.Length);
+                    product = (Product) Enum.Parse(typeof(Product), products[productIndex - 1]);
+                    // above could be done with Enum.TryParse but I decided to make it easier for the user
+                    // so that they don't have to enter the exact name of the product
                     
                     double temperature;
-                    do Console.WriteLine("Enter temperature: ");
+                    do Console.WriteLine("Enter temperature in Celsius: ");
                     while (!double.TryParse(Console.ReadLine(), out temperature));
                     
                     var refrigeratedContainer = new RefrigeratedContainer(cargoMass, height, tareWeight, depth, maxPayload, product, temperature);
@@ -73,23 +84,65 @@
         
         public static void LoadContainer()
         {
-            Console.WriteLine("Choose a container to load: ");
-            for (var i = 0; i < Containers.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {Containers[i]}");
-            }
+            ListContainers();
             
             int index;
             do Console.WriteLine("Enter container index from the list: ");
             while (!int.TryParse(Console.ReadLine(), out index) && index < 0 || index > Containers.Count);
             
-            var container = Containers[index - 1];
-            
             double cargoMass;
-            do Console.WriteLine("Enter cargo mass: ");
+            do Console.WriteLine("Enter cargo mass in kg: ");
             while (!double.TryParse(Console.ReadLine(), out cargoMass) && cargoMass <= 0);
             
-            container.Load(cargoMass);
+            Containers[index - 1].Load(cargoMass);
+        }
+        
+        public static Container GetSingleContainer()
+        {
+            ListContainers();
+            
+            int index;
+            do Console.WriteLine("Enter container index from the list: ");
+            while (!int.TryParse(Console.ReadLine(), out index) && index < 0 || index > Containers.Count);
+            
+            return Containers[index - 1];
+        }
+        
+        public static List<Container> GetManyContainer()
+        {
+            ListContainers();
+            
+            var containerIndexes = new List<int>();
+            Console.WriteLine("Enter container indexes from the list separated by space: ");
+            var indexes = Console.ReadLine();
+            if (indexes != null)
+            {
+                var splitIndexes = indexes.Split("\\s+");
+                foreach (var index in splitIndexes)
+                {
+                    if (int.TryParse(index, out var i) && i > 0 && i <= Containers.Count)
+                    {
+                        containerIndexes.Add(i - 1);
+                    }
+                }
+            }
+            
+            var containers = new List<Container>();
+            foreach (var index in containerIndexes)
+            {
+                containers.Add(Containers[index - 1]);
+            }
+
+            return containers;
+        }
+        
+        public static void ListContainers()
+        {
+            Console.WriteLine("Choose a container to load: ");
+            for (var i = 0; i < Containers.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {Containers[i]}");
+            }
         }
     }
 }

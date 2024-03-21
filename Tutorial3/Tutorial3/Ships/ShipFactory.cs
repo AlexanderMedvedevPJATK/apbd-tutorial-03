@@ -2,7 +2,6 @@
 
 public class ShipFactory
 {
-    // ship list
     public static List<Ship> Ships { get; protected set; } = new();
     
     public static Ship CreateShip()

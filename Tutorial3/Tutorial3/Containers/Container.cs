@@ -5,12 +5,12 @@ namespace Tutorial3.Containers;
 
 public abstract class Container : IContainer
 {
-    public static int ContainerCount { get; protected set; } = 0;
-    public double CargoMass { get; protected set; }
-    public double Height { get; protected set; }
-    public double TareWeight { get; protected set; }
+    public static int ContainerCount { get; protected set; }
+    public double CargoMass { get; protected set; } // kg
+    public double Height { get; protected set; } 
+    public double TareWeight { get; protected set; } // kg 
     public double Depth { get; protected set; }
-    public double MaxPayload { get; protected set; }
+    public double MaxPayload { get; protected set; } // kg
     public string SerialNumber { get; protected set; } = string.Empty;
 
     protected Container(double cargoMass, double height, double tareWeight, double depth, double maxPayload)
@@ -35,14 +35,13 @@ public abstract class Container : IContainer
         }
     }
     
-    // toString()
     public override string ToString()
     {
         return $"Serial number: {SerialNumber}\n" +
-               $"Cargo mass: {CargoMass}\n" +
-               $"Height: {Height}\n" +
-               $"Tare weight: {TareWeight}\n" +
-               $"Depth: {Depth}\n" +
-               $"Max payload: {MaxPayload}\n";
+               $"Cargo mass: {CargoMass}\n kg" +
+               $"Height: {Height}\n cm" +
+               $"Tare weight: {TareWeight}\n kg" +
+               $"Depth: {Depth}\n cm" +
+               $"Max payload: {MaxPayload}\n kg";
     }
 }

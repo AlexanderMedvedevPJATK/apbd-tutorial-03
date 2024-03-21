@@ -7,8 +7,8 @@ public class Ship
 {
     public double Speed { get; protected set; }
     public int MaxContainers { get; protected set; }
-    public double CurrWeight { get; protected set; }
-    public double MaxWeight { get; protected set; }
+    public double CurrWeight { get; protected set; } // tons
+    public double MaxWeight { get; protected set; } // tons
     public List<Container> Containers { get; protected set; }
     
     public Ship(double speed, int maxContainers, double maxWeight)
@@ -21,9 +21,9 @@ public class Ship
     
     public void LoadContainer(Container container)
     {
-        if (Containers.Count < MaxContainers && CurrWeight + container.CargoMass <= MaxWeight)
+        if (Containers.Count < MaxContainers && CurrWeight + container.CargoMass / 1000.0 <= MaxWeight)
         {
-            CurrWeight += container.CargoMass;
+            CurrWeight += container.CargoMass / 1000.0;
             Containers.Add(container);
         }
         else if (Containers.Count >= MaxContainers)
