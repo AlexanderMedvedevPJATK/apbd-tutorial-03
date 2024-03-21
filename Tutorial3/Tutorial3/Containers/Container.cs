@@ -1,6 +1,6 @@
 using IContainer = Tutorial3.Interfaces.IContainer;
 
-namespace Tutorial3;
+namespace Tutorial3.Containers;
 
 public abstract class Container : IContainer
 {
@@ -16,7 +16,7 @@ public abstract class Container : IContainer
         throw new NotImplementedException();
     }
 
-    public void Load(double cargoMass)
+    public virtual void Load(double cargoMass)
     {
         throw new NotImplementedException();
     }
