@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PJATK\\APBD\\apbd-tutorial-03\\Tutorial3\\Tutorial3\\Tutorial3.csproj": {}
+    "/Users/alexandermedvedev/PJATK/apbd/apbd-tutorial-03/Tutorial3/Tutorial3/Tutorial3.csproj": {}
   },
   "projects": {
-    "E:\\PJATK\\APBD\\apbd-tutorial-03\\Tutorial3\\Tutorial3\\Tutorial3.csproj": {
+    "/Users/alexandermedvedev/PJATK/apbd/apbd-tutorial-03/Tutorial3/Tutorial3/Tutorial3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PJATK\\APBD\\apbd-tutorial-03\\Tutorial3\\Tutorial3\\Tutorial3.csproj",
+        "projectUniqueName": "/Users/alexandermedvedev/PJATK/apbd/apbd-tutorial-03/Tutorial3/Tutorial3/Tutorial3.csproj",
         "projectName": "Tutorial3",
-        "projectPath": "E:\\PJATK\\APBD\\apbd-tutorial-03\\Tutorial3\\Tutorial3\\Tutorial3.csproj",
-        "packagesPath": "C:\\Users\\adder\\.nuget\\packages\\",
-        "outputPath": "E:\\PJATK\\APBD\\apbd-tutorial-03\\Tutorial3\\Tutorial3\\obj\\",
+        "projectPath": "/Users/alexandermedvedev/PJATK/apbd/apbd-tutorial-03/Tutorial3/Tutorial3/Tutorial3.csproj",
+        "packagesPath": "/Users/alexandermedvedev/.nuget/packages/",
+        "outputPath": "/Users/alexandermedvedev/PJATK/apbd/apbd-tutorial-03/Tutorial3/Tutorial3/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\adder\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/alexandermedvedev/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\adder\\.dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

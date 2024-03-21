@@ -4,41 +4,81 @@ namespace Tutorial3.Ships;
 
 public class ShipFactory
 {
-    public static int shipCount { get; protected set; }
-    public static List<Ship> Ships { get; protected set; } = new();
+    public static int ShipCount { get; protected set; }
+    public static List<Ship> Ships = new();
     
     public static Ship CreateShip()
     {
         double speed;
-        do Console.WriteLine("Enter speed: ");
+        do Console.Write("Enter speed: ");
         while (!double.TryParse(Console.ReadLine(), out speed) && speed <= 0);
         
         int maxContainers;
-        do Console.WriteLine("Enter max containers: ");
+        do Console.Write("Enter max containers: ");
         while (!int.TryParse(Console.ReadLine(), out maxContainers) && maxContainers <= 0);
         
         double maxWeight;
-        do Console.WriteLine("Enter max weight: ");
+        do Console.Write("Enter max weight: ");
         while (!double.TryParse(Console.ReadLine(), out maxWeight) && maxWeight <= 0);
         
-        var ship = new Ship(++shipCount, speed, maxContainers, maxWeight);
+        var ship = new Ship(++ShipCount, speed, maxContainers, maxWeight);
         Ships.Add(ship);
         return ship;
     }
-    // getSingeShip method
+    
     public static Ship GetSingleShip()
     {
         ListShips();
         
         int index;
-        do Console.WriteLine("Enter ship index from the list: ");
-        while (!int.TryParse(Console.ReadLine(), out index) && index < 0 || index > Ships.Count);
+        do Console.Write("Enter ship index from the list: ");
+        while (!int.TryParse(Console.ReadLine(), out index) && (index < 0 || index > Ships.Count));
         
         return Ships[index - 1];
     }
     
+    public static void ListShips()
+    {
+        Console.WriteLine("Ships: ");
+        for (var i = 0; i < Ships.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {Ships[i]}");
+        }
+    }
+    public static void PrintShipInfo()
+    {
+        var ship = GetSingleShip();
+        Console.WriteLine(ship);
+        ship.ListContainers();
+    }
+
+    public static void DeleteShip()
+    {
+        Ships.Remove(GetSingleShip());
+    }
     
-    // transfer container between ships
+    public static void LoadContainer()
+    {
+        var ship = GetSingleShip();
+        var container = ContainerFactory.GetSingleContainer();
+        ship.LoadContainer(container);
+    }
+    
+    public static void UnloadContainer()
+    {
+        var ship = GetSingleShip();
+        var container = ship.GetSingleContainer();
+        ship.UnloadContainer(container);
+    }
+    
+    public static void ReplaceContainer()
+    {
+        var ship = GetSingleShip();
+        var oldContainer = ship.GetSingleContainer();
+        var newContainer = ContainerFactory.GetSingleContainer();
+        ship.ReplaceContainer(oldContainer, newContainer);
+    }
+    
     public static void TransferContainer()
     {
         var fromShip = GetSingleShip();
@@ -47,14 +87,5 @@ public class ShipFactory
 
         fromShip.UnloadContainer(container);
         toShip.LoadContainer(container);
-    }
-    
-    public static void ListShips()
-    {
-        Console.WriteLine("Choose a ship: ");
-        for (var i = 0; i < Ships.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {Ships[i]}");
-        }
     }
 }

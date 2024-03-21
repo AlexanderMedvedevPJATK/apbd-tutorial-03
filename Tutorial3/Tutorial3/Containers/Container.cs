@@ -38,10 +38,10 @@ public abstract class Container : IContainer
     public override string ToString()
     {
         return $"Serial number: {SerialNumber}\n" +
-               $"Cargo mass: {CargoMass}\n kg" +
-               $"Height: {Height}\n cm" +
-               $"Tare weight: {TareWeight}\n kg" +
-               $"Depth: {Depth}\n cm" +
-               $"Max payload: {MaxPayload}\n kg";
+               $"Cargo mass: {CargoMass} kg\n" +
+               $"Height: {Height} cm\n" +
+               $"Tare weight: {TareWeight} kg\n" +
+               $"Depth: {Depth} cm\n" +
+               $"Max payload: {MaxPayload} kg\n";
     }
 }

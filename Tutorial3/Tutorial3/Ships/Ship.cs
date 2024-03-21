@@ -96,7 +96,7 @@ public class Ship
         ListContainers();
         
         int index;
-        do Console.WriteLine("Enter container index from the list: ");
+        do Console.Write("Enter container index from the list: ");
         while (!int.TryParse(Console.ReadLine(), out index) && index < 0 || index > Containers.Count);
         
         return Containers[index - 1];
