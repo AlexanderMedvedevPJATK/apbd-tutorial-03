@@ -7,7 +7,13 @@ public class GasContainer : Container, IHazardNotifier
     
     public double Pressure { get; protected set; }
     // constructor
-    public GasContainer(double cargoMass, double height, double tareWeight, double depth, double maxPayload, double pressure) 
+    public GasContainer(
+        double cargoMass, 
+        double height, 
+        double tareWeight,
+        double depth,
+        double maxPayload,
+        double pressure) 
         : base(cargoMass, height, tareWeight, depth, maxPayload)
     {
         Pressure = pressure;

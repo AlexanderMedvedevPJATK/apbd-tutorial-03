@@ -8,7 +8,13 @@ public class LiquidContainer : Container, IHazardNotifier
 
     public bool Hazardous { get; protected set; }
 
-    public LiquidContainer(double cargoMass, double height, double tareWeight, double depth, double maxPayload, bool hazardous) 
+    public LiquidContainer(
+        double cargoMass,
+        double height,
+        double tareWeight,
+        double depth, 
+        double maxPayload, 
+        bool hazardous) 
         : base(cargoMass, height, tareWeight, depth, maxPayload)
     {
         Hazardous = hazardous;

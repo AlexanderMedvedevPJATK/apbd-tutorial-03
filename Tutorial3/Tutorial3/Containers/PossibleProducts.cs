@@ -1,7 +1,15 @@
 namespace Tutorial3.Containers;
 
-public enum PossibleProducts
+public enum Product
 {
     Banana,
-    Chocolate
+    Chocolate,
+    Fish,
+    Meat,
+    IceCream,
+    FrozenPizza,
+    Cheese,
+    Sausages,
+    Butter,
+    Eggs
 }
