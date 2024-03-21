@@ -69,11 +69,10 @@
 
             return null;
         }
+
         
-        // load container
         public static void LoadContainer()
         {
-            // choose container to load
             Console.WriteLine("Choose a container to load: ");
             for (var i = 0; i < Containers.Count; i++)
             {
