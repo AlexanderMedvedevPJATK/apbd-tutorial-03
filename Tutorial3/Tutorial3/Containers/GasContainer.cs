@@ -25,10 +25,10 @@ public class GasContainer : Container, IHazardNotifier
         CargoMass = CargoMass * 0.05;
     }
     
-    public void SendHazardNotification(string message, int number)
+    public void SendHazardNotification(string message, string serialNumber)
     {
         Console.WriteLine("Hazardous even occured: \n" +
                           message + "\n" +
-                          "Container number: " + number);
+                          "Container number: " + serialNumber);
     }
 }

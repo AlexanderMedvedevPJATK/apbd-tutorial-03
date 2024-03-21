@@ -34,4 +34,15 @@ public abstract class Container : IContainer
             throw new OverfillException("Cannot be loaded. Cargo mass exceeds max payload");
         }
     }
+    
+    // toString()
+    public override string ToString()
+    {
+        return $"Serial number: {SerialNumber}\n" +
+               $"Cargo mass: {CargoMass}\n" +
+               $"Height: {Height}\n" +
+               $"Tare weight: {TareWeight}\n" +
+               $"Depth: {Depth}\n" +
+               $"Max payload: {MaxPayload}\n";
+    }
 }

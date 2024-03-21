@@ -21,11 +21,11 @@ public class LiquidContainer : Container, IHazardNotifier
         SerialNumber = $"KON-L-{ContainerCount++}";
     }
 
-    public void SendHazardNotification(string message, int number)
+    public void SendHazardNotification(string message, string serialNumber)
     {
         Console.Write("You're trying to perform a dangerous operation: \n" +
                           message + "\n" +
-                          "Occured at container number: " + number + "\n" +
+                          "Occured at container number: " + serialNumber + "\n" +
                           "Are you sure you want to proceed? (yes/no): ");
     }
 
@@ -42,18 +42,21 @@ public class LiquidContainer : Container, IHazardNotifier
             {
                 if (Hazardous)
                 {
-                    SendHazardNotification("Container storing hazardous cargo should only be filled up to 50%", 0);
+                    SendHazardNotification(
+                        "Container storing hazardous cargo should only be filled up to 50%",
+                        SerialNumber
+                        );
                 }
                 else
                 {
-                    SendHazardNotification("Container storing non-hazardous cargo should only be filled up to 90%", 0);
+                    SendHazardNotification(
+                        "Container storing non-hazardous cargo should only be filled up to 90%",
+                        SerialNumber
+                        );
                 }
 
                 var response = Console.ReadLine();
-                if (response != null && response.ToLower() == "yes")
-                {
-                    base.Load(cargoMass);
-                }
+                if (response != null && response.ToLower() == "yes") base.Load(cargoMass);
             }
         }
     }
